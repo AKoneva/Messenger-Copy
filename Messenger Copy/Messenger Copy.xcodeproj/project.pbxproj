@@ -19,6 +19,7 @@
 		046B7C022AD044C500031AFB /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C012AD044C500031AFB /* NewMessageView.swift */; };
 		046B7C072AD0497300031AFB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C062AD0497300031AFB /* ProfileView.swift */; };
 		046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C082AD04ACC00031AFB /* SettingsViewModel.swift */; };
+		046B7C0B2AD04E3400031AFB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C0A2AD04E3400031AFB /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		046B7C012AD044C500031AFB /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		046B7C062AD0497300031AFB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		046B7C082AD04ACC00031AFB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		046B7C0A2AD04E3400031AFB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				046B7C082AD04ACC00031AFB /* SettingsViewModel.swift */,
+				046B7C0A2AD04E3400031AFB /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				046B7BE12AD02C7B00031AFB /* ContentView.swift in Sources */,
 				046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */,
 				046B7BFA2AD03A9000031AFB /* InboxView.swift in Sources */,
+				046B7C0B2AD04E3400031AFB /* ProfileViewModel.swift in Sources */,
 				046B7BFD2AD03C9400031AFB /* ActiveNowView.swift in Sources */,
 				046B7BDF2AD02C7B00031AFB /* Messenger_CopyApp.swift in Sources */,
 				046B7BF72AD0380F00031AFB /* RegistrationView.swift in Sources */,
