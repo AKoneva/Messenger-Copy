@@ -16,6 +16,9 @@
 		046B7BFA2AD03A9000031AFB /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7BF92AD03A8F00031AFB /* InboxView.swift */; };
 		046B7BFD2AD03C9400031AFB /* ActiveNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7BFC2AD03C9300031AFB /* ActiveNowView.swift */; };
 		046B7BFF2AD03FCB00031AFB /* InboxRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7BFE2AD03FCB00031AFB /* InboxRowView.swift */; };
+		046B7C022AD044C500031AFB /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C012AD044C500031AFB /* NewMessageView.swift */; };
+		046B7C072AD0497300031AFB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C062AD0497300031AFB /* ProfileView.swift */; };
+		046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C082AD04ACC00031AFB /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		046B7BF92AD03A8F00031AFB /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		046B7BFC2AD03C9300031AFB /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
 		046B7BFE2AD03FCB00031AFB /* InboxRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxRowView.swift; sourceTree = "<group>"; };
+		046B7C012AD044C500031AFB /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
+		046B7C062AD0497300031AFB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		046B7C082AD04ACC00031AFB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +104,11 @@
 		046B7BEE2AD02D7A00031AFB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				046B7C032AD0495500031AFB /* Profile */,
 				046B7BF12AD02DBA00031AFB /* Authantication */,
 				046B7BF82AD03A7000031AFB /* Inbox */,
 				046B7BFB2AD03C7A00031AFB /* ActiveNow */,
+				046B7C002AD044A600031AFB /* NewMessage */,
 				046B7BF22AD02DD100031AFB /* Root */,
 			);
 			path = Core;
@@ -160,6 +168,39 @@
 				046B7BFC2AD03C9300031AFB /* ActiveNowView.swift */,
 			);
 			path = ActiveNow;
+			sourceTree = "<group>";
+		};
+		046B7C002AD044A600031AFB /* NewMessage */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C012AD044C500031AFB /* NewMessageView.swift */,
+			);
+			path = NewMessage;
+			sourceTree = "<group>";
+		};
+		046B7C032AD0495500031AFB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C052AD0496700031AFB /* View */,
+				046B7C042AD0496000031AFB /* ViewModel */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		046B7C042AD0496000031AFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C082AD04ACC00031AFB /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		046B7C052AD0496700031AFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C062AD0497300031AFB /* ProfileView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +274,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				046B7BFF2AD03FCB00031AFB /* InboxRowView.swift in Sources */,
+				046B7C072AD0497300031AFB /* ProfileView.swift in Sources */,
+				046B7C022AD044C500031AFB /* NewMessageView.swift in Sources */,
 				046B7BF52AD02E0900031AFB /* LoginView.swift in Sources */,
 				046B7BE12AD02C7B00031AFB /* ContentView.swift in Sources */,
+				046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */,
 				046B7BFA2AD03A9000031AFB /* InboxView.swift in Sources */,
 				046B7BFD2AD03C9400031AFB /* ActiveNowView.swift in Sources */,
 				046B7BDF2AD02C7B00031AFB /* Messenger_CopyApp.swift in Sources */,
