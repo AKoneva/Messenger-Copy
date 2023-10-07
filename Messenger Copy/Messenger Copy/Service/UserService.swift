@@ -22,4 +22,10 @@ class UserService {
         let user = try snapshot.data(as: User.self)
         currentUser = user
     }
+    
+    @MainActor
+    static func fetchAllUser() async throws  -> [User] {
+        let snapshot = try await Firestore.firestore().collection("users").getDocuments()
+        return try snapshot.documents.compactMap({ try $0.data(as: User.self) })
+    }
 }

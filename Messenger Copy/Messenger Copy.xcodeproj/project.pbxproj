@@ -59,6 +59,7 @@
 		046B7C5C2AD1283400031AFB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C5B2AD1283400031AFB /* ContentViewModel.swift */; };
 		046B7C5E2AD1340800031AFB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C5D2AD1340700031AFB /* UserService.swift */; };
 		046B7C622AD1372800031AFB /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C612AD1372800031AFB /* InboxViewModel.swift */; };
+		046B7C662AD13E5600031AFB /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C652AD13E5600031AFB /* NewMessageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		046B7C5B2AD1283400031AFB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		046B7C5D2AD1340700031AFB /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		046B7C612AD1372800031AFB /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		046B7C652AD13E5600031AFB /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +263,8 @@
 		046B7C002AD044A600031AFB /* NewMessage */ = {
 			isa = PBXGroup;
 			children = (
-				046B7C012AD044C500031AFB /* NewMessageView.swift */,
+				046B7C642AD13E4300031AFB /* ViewModel */,
+				046B7C632AD13E3E00031AFB /* View */,
 			);
 			path = NewMessage;
 			sourceTree = "<group>";
@@ -358,6 +361,22 @@
 				046B7C612AD1372800031AFB /* InboxViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		046B7C632AD13E3E00031AFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C012AD044C500031AFB /* NewMessageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		046B7C642AD13E4300031AFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C652AD13E5600031AFB /* NewMessageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,6 +497,7 @@
 				046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */,
 				046B7BFA2AD03A9000031AFB /* InboxView.swift in Sources */,
 				046B7C542AD11F0300031AFB /* LoginViewModel.swift in Sources */,
+				046B7C662AD13E5600031AFB /* NewMessageViewModel.swift in Sources */,
 				046B7C5E2AD1340800031AFB /* UserService.swift in Sources */,
 				046B7C0B2AD04E3400031AFB /* ProfileViewModel.swift in Sources */,
 				046B7C0D2AD050AC00031AFB /* User.swift in Sources */,

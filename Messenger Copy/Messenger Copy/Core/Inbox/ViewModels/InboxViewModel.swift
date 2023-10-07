@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import Combine
 
+@MainActor
 class InboxViewModel: ObservableObject {
     @Published var currentUser: User?
     
