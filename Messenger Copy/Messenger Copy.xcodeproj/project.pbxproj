@@ -53,6 +53,12 @@
 		046B7C4C2AD11E0100031AFB /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7C4B2AD11E0100031AFB /* FirebaseRemoteConfigSwift */; };
 		046B7C4E2AD11E0100031AFB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7C4D2AD11E0100031AFB /* FirebaseStorage */; };
 		046B7C502AD11E0100031AFB /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7C4F2AD11E0100031AFB /* FirebaseStorageCombine-Community */; };
+		046B7C542AD11F0300031AFB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C532AD11F0300031AFB /* LoginViewModel.swift */; };
+		046B7C562AD11F2700031AFB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C552AD11F2700031AFB /* RegistrationViewModel.swift */; };
+		046B7C582AD11F3E00031AFB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C572AD11F3E00031AFB /* AuthService.swift */; };
+		046B7C5C2AD1283400031AFB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C5B2AD1283400031AFB /* ContentViewModel.swift */; };
+		046B7C5E2AD1340800031AFB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C5D2AD1340700031AFB /* UserService.swift */; };
+		046B7C622AD1372800031AFB /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7C612AD1372800031AFB /* InboxViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +82,12 @@
 		046B7C142AD115A400031AFB /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
 		046B7C162AD11A4B00031AFB /* ChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleView.swift; sourceTree = "<group>"; };
 		046B7C182AD11D6B00031AFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		046B7C532AD11F0300031AFB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		046B7C552AD11F2700031AFB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		046B7C572AD11F3E00031AFB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		046B7C5B2AD1283400031AFB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		046B7C5D2AD1340700031AFB /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		046B7C612AD1372800031AFB /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,9 +185,9 @@
 		046B7BEE2AD02D7A00031AFB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				046B7BF12AD02DBA00031AFB /* Authantication */,
 				046B7C112AD1134100031AFB /* Chat */,
 				046B7C032AD0495500031AFB /* Profile */,
-				046B7BF12AD02DBA00031AFB /* Authantication */,
 				046B7BF82AD03A7000031AFB /* Inbox */,
 				046B7BFB2AD03C7A00031AFB /* ActiveNow */,
 				046B7C002AD044A600031AFB /* NewMessage */,
@@ -196,6 +208,7 @@
 		046B7BF02AD02D8B00031AFB /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				046B7C5D2AD1340700031AFB /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -203,6 +216,8 @@
 		046B7BF12AD02DBA00031AFB /* Authantication */ = {
 			isa = PBXGroup;
 			children = (
+				046B7C522AD11EDF00031AFB /* Service */,
+				046B7C512AD11EDC00031AFB /* ViewModel */,
 				046B7BF32AD02DF100031AFB /* View */,
 			);
 			path = Authantication;
@@ -211,7 +226,8 @@
 		046B7BF22AD02DD100031AFB /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				046B7BE02AD02C7B00031AFB /* ContentView.swift */,
+				046B7C5A2AD1282000031AFB /* ViewModel */,
+				046B7C592AD1281A00031AFB /* View */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -228,8 +244,8 @@
 		046B7BF82AD03A7000031AFB /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
-				046B7BF92AD03A8F00031AFB /* InboxView.swift */,
-				046B7BFE2AD03FCB00031AFB /* InboxRowView.swift */,
+				046B7C602AD136FE00031AFB /* ViewModels */,
+				046B7C5F2AD136F200031AFB /* Views */,
 			);
 			path = Inbox;
 			sourceTree = "<group>";
@@ -292,6 +308,56 @@
 				046B7C162AD11A4B00031AFB /* ChatBubbleView.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		046B7C512AD11EDC00031AFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C532AD11F0300031AFB /* LoginViewModel.swift */,
+				046B7C552AD11F2700031AFB /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		046B7C522AD11EDF00031AFB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C572AD11F3E00031AFB /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		046B7C592AD1281A00031AFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				046B7BE02AD02C7B00031AFB /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		046B7C5A2AD1282000031AFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C5B2AD1283400031AFB /* ContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		046B7C5F2AD136F200031AFB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				046B7BF92AD03A8F00031AFB /* InboxView.swift */,
+				046B7BFE2AD03FCB00031AFB /* InboxRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		046B7C602AD136FE00031AFB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C612AD1372800031AFB /* InboxViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,15 +464,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				046B7BFF2AD03FCB00031AFB /* InboxRowView.swift in Sources */,
+				046B7C622AD1372800031AFB /* InboxViewModel.swift in Sources */,
+				046B7C562AD11F2700031AFB /* RegistrationViewModel.swift in Sources */,
 				046B7C072AD0497300031AFB /* ProfileView.swift in Sources */,
 				046B7C022AD044C500031AFB /* NewMessageView.swift in Sources */,
+				046B7C5C2AD1283400031AFB /* ContentViewModel.swift in Sources */,
 				046B7C152AD115A400031AFB /* ChatMessageView.swift in Sources */,
 				046B7BF52AD02E0900031AFB /* LoginView.swift in Sources */,
+				046B7C582AD11F3E00031AFB /* AuthService.swift in Sources */,
 				046B7C132AD1134C00031AFB /* ChatView.swift in Sources */,
 				046B7C172AD11A4B00031AFB /* ChatBubbleView.swift in Sources */,
 				046B7BE12AD02C7B00031AFB /* ContentView.swift in Sources */,
 				046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */,
 				046B7BFA2AD03A9000031AFB /* InboxView.swift in Sources */,
+				046B7C542AD11F0300031AFB /* LoginViewModel.swift in Sources */,
+				046B7C5E2AD1340800031AFB /* UserService.swift in Sources */,
 				046B7C0B2AD04E3400031AFB /* ProfileViewModel.swift in Sources */,
 				046B7C0D2AD050AC00031AFB /* User.swift in Sources */,
 				046B7BFD2AD03C9400031AFB /* ActiveNowView.swift in Sources */,

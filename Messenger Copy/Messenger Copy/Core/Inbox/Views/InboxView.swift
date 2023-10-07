@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InboxView: View {
     @State private var showNewMessageView: Bool = false
-    @State private var user = User.MOCK_USER
+    @StateObject var viewModel = InboxViewModel()
     
     var body: some View {
         NavigationStack {
@@ -39,14 +39,10 @@ struct InboxView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
-                        NavigationLink(value: user) {
-                            Image(user.profileImageURL ?? "")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 36, height: 36)
-                                .clipShape(Circle())
+                        NavigationLink(value: viewModel.currentUser) {
+                            CircleProfileImageView(user: viewModel.currentUser, size: .xSmall)
                         }
-                      
+                        
                         Text("Chats")
                             .font(.title)
                             .fontWeight(.semibold)
@@ -56,7 +52,10 @@ struct InboxView: View {
                     Button {
                         showNewMessageView.toggle()
                     } label: {
-                        CircleProfileImageView(user: user, size: .xxSmall)
+                        Image(systemName: "square.and.pencil.circle.fill")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .foregroundStyle(.black, Color(.systemGray5))
                     }
                 }
             }
