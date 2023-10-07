@@ -23,11 +23,7 @@ struct ProfileView: View {
                             .clipShape(Circle())
                         
                     } else {
-                        Image(user.profileImageURL ?? "")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .clipShape(Circle())
+                        CircleProfileImageView(user: user, size: .xLarge)
                     }
                 }
                 

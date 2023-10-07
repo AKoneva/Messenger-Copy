@@ -29,10 +29,7 @@ struct NewMessageView: View {
                     ForEach(0 ... 10, id: \.self) { user in
                         VStack {
                             HStack {
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .frame(width: 32, height: 32)
-                                    .foregroundColor(.gray)
+                                CircleProfileImageView(user: User.MOCK_USER, size: .small)
                                 Text("Name Surname")
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
@@ -52,7 +49,7 @@ struct NewMessageView: View {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(.blue)
                 }
             }
         }
