@@ -13,7 +13,7 @@ struct Message: Identifiable, Codable, Hashable {
     @DocumentID var messageId: String?
     let fromId: String
     let toId: String
-    let message: String
+    let messageText: String
     let timeStamp: Timestamp
     let isRead: Bool
     
