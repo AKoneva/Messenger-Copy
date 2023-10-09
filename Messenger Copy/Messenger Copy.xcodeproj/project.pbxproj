@@ -65,6 +65,8 @@
 		046B7CA72AD1952500031AFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 046B7CA62AD1952500031AFB /* GoogleService-Info.plist */; };
 		046B7CAA2AD2CF5600031AFB /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CA92AD2CF5600031AFB /* ChatService.swift */; };
 		046B7CAD2AD2D0CD00031AFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CAC2AD2D0CD00031AFB /* Constants.swift */; };
+		046B7CB02AD2D64E00031AFB /* InboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CAF2AD2D64E00031AFB /* InboxService.swift */; };
+		046B7CB22AD3CBEC00031AFB /* TimestampExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CB12AD3CBEC00031AFB /* TimestampExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		046B7CA62AD1952500031AFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		046B7CA92AD2CF5600031AFB /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		046B7CAC2AD2D0CD00031AFB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		046B7CAF2AD2D64E00031AFB /* InboxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxService.swift; sourceTree = "<group>"; };
+		046B7CB12AD3CBEC00031AFB /* TimestampExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 		046B7BED2AD02D6100031AFB /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				046B7CB12AD3CBEC00031AFB /* TimestampExtentions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 		046B7BF82AD03A7000031AFB /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
+				046B7CAE2AD2D63F00031AFB /* Service */,
 				046B7C602AD136FE00031AFB /* ViewModels */,
 				046B7C5F2AD136F200031AFB /* Views */,
 			);
@@ -426,6 +432,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		046B7CAE2AD2D63F00031AFB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				046B7CAF2AD2D64E00031AFB /* InboxService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -536,10 +550,12 @@
 				046B7C072AD0497300031AFB /* ProfileView.swift in Sources */,
 				046B7C022AD044C500031AFB /* NewMessageView.swift in Sources */,
 				046B7C5C2AD1283400031AFB /* ContentViewModel.swift in Sources */,
+				046B7CB22AD3CBEC00031AFB /* TimestampExtentions.swift in Sources */,
 				046B7C152AD115A400031AFB /* ChatMessageView.swift in Sources */,
 				046B7BF52AD02E0900031AFB /* LoginView.swift in Sources */,
 				046B7C582AD11F3E00031AFB /* AuthService.swift in Sources */,
 				046B7C132AD1134C00031AFB /* ChatView.swift in Sources */,
+				046B7CB02AD2D64E00031AFB /* InboxService.swift in Sources */,
 				046B7CAD2AD2D0CD00031AFB /* Constants.swift in Sources */,
 				046B7C172AD11A4B00031AFB /* ChatBubbleView.swift in Sources */,
 				046B7BE12AD02C7B00031AFB /* ContentView.swift in Sources */,

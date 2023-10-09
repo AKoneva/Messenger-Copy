@@ -18,14 +18,31 @@ class UserService {
     func fetchCurrentUser() async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let snapshot = try await Firestore.firestore().collection("users").document(uid).getDocument()
+        let snapshot = try await FirestoreConstants.UserCollection.document(uid).getDocument()
         let user = try snapshot.data(as: User.self)
         currentUser = user
     }
     
     @MainActor
     static func fetchAllUser() async throws  -> [User] {
-        let snapshot = try await Firestore.firestore().collection("users").getDocuments()
+        let snapshot = try await FirestoreConstants.UserCollection.getDocuments()
         return try snapshot.documents.compactMap({ try $0.data(as: User.self) })
+    }
+    
+    @MainActor
+    static func fetchUser(withUid: String, complition: @escaping(User) -> Void) {
+        let snapshot = FirestoreConstants.UserCollection.document(withUid).getDocument { snapshot, error in
+            if let error = error {
+                print("Error to fetch user with id: \(withUid)")
+                return
+            }
+            
+            guard let user = try? snapshot?.data(as: User.self) else {
+                print("Error decode user with  id: \(withUid)")
+                return
+            }
+            
+            complition(user)
+        }
     }
 }

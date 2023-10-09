@@ -18,8 +18,11 @@ struct InboxView: View {
             ScrollView {
                 ActiveNowView()
                 List {
-                    ForEach(0 ... 10, id: \.self) { message in
-                        InboxRowView()
+                    ForEach(viewModel.recentMessages) { message in
+                        InboxRowView(message: message)
+                            .onTapGesture {
+                                selectedUser = message.user
+                            }
                     }
                     .swipeActions {
                         Button {
@@ -31,6 +34,7 @@ struct InboxView: View {
                 }
                 .listStyle(.plain)
                 .frame(height: UIScreen.main.bounds.height - 120)
+               
             }
             .onChange(of: selectedUser, { oldValue, newValue in
                 showChat = newValue != nil

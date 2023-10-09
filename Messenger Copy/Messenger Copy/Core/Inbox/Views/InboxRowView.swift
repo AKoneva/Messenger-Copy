@@ -6,18 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct InboxRowView: View {
+    let message: Message
+    
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            CircleProfileImageView(user: User.MOCK_USER, size: .medium)
+            CircleProfileImageView(user: message.user, size: .medium)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Name Surname")
+                Text(message.user?.fullName ?? "")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 
-                Text("Some message that will take a lot of space and doent have any sense.")
+                Text(message.messageText)
                     .font(.subheadline)
                     .foregroundStyle(.gray)
                     .lineLimit(2)
@@ -36,5 +39,12 @@ struct InboxRowView: View {
 }
 
 #Preview {
-    InboxRowView()
+    InboxRowView(message: Message(messageId: UUID().uuidString,
+                                  fromId: UUID().uuidString,
+                                  toId: UUID().uuidString,
+                                  messageText: "Test message",
+                                  timeStamp: Timestamp(),
+                                  isRead: false,
+                                  user: nil)
+    )
 }
