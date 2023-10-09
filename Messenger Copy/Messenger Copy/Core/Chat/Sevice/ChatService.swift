@@ -63,7 +63,7 @@ struct ChatService {
                 messages[index].user = self.chatParther
             }
             
-            complition(messages)
+             complition(messages.sorted(by: { $0.timeStamp < $1.timeStamp }))
         }
     }
 }

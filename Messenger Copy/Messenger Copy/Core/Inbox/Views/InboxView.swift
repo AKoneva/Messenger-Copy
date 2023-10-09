@@ -15,28 +15,27 @@ struct InboxView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            List {
                 ActiveNowView()
-                List {
-                    ForEach(viewModel.recentMessages) { message in
-                        InboxRowView(message: message)
-                            .onTapGesture {
-                                selectedUser = message.user
-                                showChat = true
-                            }
-                    }
-                    .swipeActions {
-                        Button {
-                            print("Delete")
-                        } label: {
-                            Image(systemName: "trash")
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets())
+                
+                ForEach(viewModel.recentMessages) { message in
+                    InboxRowView(message: message)
+                        .onTapGesture {
+                            selectedUser = message.user
+                            showChat = true
                         }
+                }
+                .swipeActions {
+                    Button {
+                        print("Delete")
+                    } label: {
+                        Image(systemName: "trash")
                     }
                 }
-                .listStyle(.plain)
-                .frame(height: UIScreen.main.bounds.height - 120)
-               
             }
+            .listStyle(.plain)
             .navigationDestination(for: User.self, destination: { user in
                 ProfileView(user: user)
             })

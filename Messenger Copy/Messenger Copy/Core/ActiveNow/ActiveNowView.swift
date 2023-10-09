@@ -33,7 +33,7 @@ struct ActiveNowView: View {
             }
             .padding()
         }
-        .frame(height: 160)
+        .frame(height: 120)
     }
 }
 

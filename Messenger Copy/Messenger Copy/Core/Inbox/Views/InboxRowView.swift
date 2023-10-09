@@ -25,12 +25,11 @@ struct InboxRowView: View {
                     .font(.subheadline)
                     .foregroundStyle(.gray)
                     .lineLimit(2)
-//                    .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
             }
             
             HStack {
                 Spacer()
-                Text("Yesterday")
+                Text(message.timestampString)
                 Image(systemName: "chevron.right")
             }
             .font(.footnote)
