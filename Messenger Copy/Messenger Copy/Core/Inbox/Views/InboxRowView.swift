@@ -19,6 +19,7 @@ struct InboxRowView: View {
                 Text(message.user?.fullName ?? "")
                     .font(.subheadline)
                     .fontWeight(.semibold)
+    
                 
                 Text(message.messageText)
                     .font(.subheadline)
@@ -28,6 +29,7 @@ struct InboxRowView: View {
             }
             
             HStack {
+                Spacer()
                 Text("Yesterday")
                 Image(systemName: "chevron.right")
             }

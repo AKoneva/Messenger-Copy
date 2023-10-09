@@ -22,6 +22,7 @@ struct InboxView: View {
                         InboxRowView(message: message)
                             .onTapGesture {
                                 selectedUser = message.user
+                                showChat = true
                             }
                     }
                     .swipeActions {
@@ -36,9 +37,6 @@ struct InboxView: View {
                 .frame(height: UIScreen.main.bounds.height - 120)
                
             }
-            .onChange(of: selectedUser, { oldValue, newValue in
-                showChat = newValue != nil
-            })
             .navigationDestination(for: User.self, destination: { user in
                 ProfileView(user: user)
             })
