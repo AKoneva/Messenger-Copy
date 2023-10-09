@@ -51,13 +51,12 @@ struct LoginView: View {
                     Task { try await viewModel.login() }
                 } label: {
                     Text("Login")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .frame(width: 360, height: 44)
-                        .background(Color(.systemBlue))
-                        .cornerRadius(10)
                 }
+                .buttonStyle(CustomButtonStyle(
+                                backgroundColor: Color.blue,
+                                foregroundColor: Color.white,
+                                cornerRadius: 10
+                            ))
                 .padding(.vertical)
                 
                 HStack {

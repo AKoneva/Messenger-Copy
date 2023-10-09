@@ -26,6 +26,5 @@ class ProfileViewModel: ObservableObject {
         guard let uiimage = UIImage(data: imageData) else { return }
         
         self.image = Image(uiImage: uiimage)
-        
     }
 }

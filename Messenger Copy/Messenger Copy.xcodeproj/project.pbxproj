@@ -68,6 +68,9 @@
 		046B7CB02AD2D64E00031AFB /* InboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CAF2AD2D64E00031AFB /* InboxService.swift */; };
 		046B7CB22AD3CBEC00031AFB /* TimestampExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CB12AD3CBEC00031AFB /* TimestampExtentions.swift */; };
 		046B7CB42AD3D5EE00031AFB /* DateExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CB32AD3D5EE00031AFB /* DateExtentions.swift */; };
+		046B7CB82AD3D9B900031AFB /* ActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CB72AD3D9B900031AFB /* ActiveNowViewModel.swift */; };
+		046B7CBA2AD3DDCA00031AFB /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CB92AD3DDCA00031AFB /* UserProfileView.swift */; };
+		046B7CBC2AD3E08600031AFB /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CBB2AD3E08600031AFB /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +109,9 @@
 		046B7CAF2AD2D64E00031AFB /* InboxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxService.swift; sourceTree = "<group>"; };
 		046B7CB12AD3CBEC00031AFB /* TimestampExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampExtentions.swift; sourceTree = "<group>"; };
 		046B7CB32AD3D5EE00031AFB /* DateExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtentions.swift; sourceTree = "<group>"; };
+		046B7CB72AD3D9B900031AFB /* ActiveNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowViewModel.swift; sourceTree = "<group>"; };
+		046B7CB92AD3DDCA00031AFB /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		046B7CBB2AD3E08600031AFB /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,7 +283,8 @@
 		046B7BFB2AD03C7A00031AFB /* ActiveNow */ = {
 			isa = PBXGroup;
 			children = (
-				046B7BFC2AD03C9300031AFB /* ActiveNowView.swift */,
+				046B7CB62AD3D9A200031AFB /* ViewModel */,
+				046B7CB52AD3D99A00031AFB /* View */,
 			);
 			path = ActiveNow;
 			sourceTree = "<group>";
@@ -313,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				046B7C062AD0497300031AFB /* ProfileView.swift */,
+				046B7CB92AD3DDCA00031AFB /* UserProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				046B7C0F2AD1106B00031AFB /* CircleProfileImageView.swift */,
+				046B7CBB2AD3E08600031AFB /* CustomButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -443,6 +452,22 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		046B7CB52AD3D99A00031AFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				046B7BFC2AD03C9300031AFB /* ActiveNowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		046B7CB62AD3D9A200031AFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046B7CB72AD3D9B900031AFB /* ActiveNowViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -553,6 +578,7 @@
 				046B7C072AD0497300031AFB /* ProfileView.swift in Sources */,
 				046B7C022AD044C500031AFB /* NewMessageView.swift in Sources */,
 				046B7C5C2AD1283400031AFB /* ContentViewModel.swift in Sources */,
+				046B7CBA2AD3DDCA00031AFB /* UserProfileView.swift in Sources */,
 				046B7CB22AD3CBEC00031AFB /* TimestampExtentions.swift in Sources */,
 				046B7C152AD115A400031AFB /* ChatMessageView.swift in Sources */,
 				046B7BF52AD02E0900031AFB /* LoginView.swift in Sources */,
@@ -561,6 +587,7 @@
 				046B7CB02AD2D64E00031AFB /* InboxService.swift in Sources */,
 				046B7CAD2AD2D0CD00031AFB /* Constants.swift in Sources */,
 				046B7C172AD11A4B00031AFB /* ChatBubbleView.swift in Sources */,
+				046B7CB82AD3D9B900031AFB /* ActiveNowViewModel.swift in Sources */,
 				046B7BE12AD02C7B00031AFB /* ContentView.swift in Sources */,
 				046B7CB42AD3D5EE00031AFB /* DateExtentions.swift in Sources */,
 				046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */,
@@ -573,6 +600,7 @@
 				046B7C0D2AD050AC00031AFB /* User.swift in Sources */,
 				046B7BFD2AD03C9400031AFB /* ActiveNowView.swift in Sources */,
 				046B7C6A2AD14AE600031AFB /* MessageService.swift in Sources */,
+				046B7CBC2AD3E08600031AFB /* CustomButton.swift in Sources */,
 				046B7C102AD1106B00031AFB /* CircleProfileImageView.swift in Sources */,
 				046B7C682AD1494900031AFB /* Message.swift in Sources */,
 				046B7BDF2AD02C7B00031AFB /* Messenger_CopyApp.swift in Sources */,
