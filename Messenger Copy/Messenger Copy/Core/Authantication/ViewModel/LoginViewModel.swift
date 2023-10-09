@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 class LoginViewModel: ObservableObject {
     @Published var email = ""
@@ -13,5 +14,9 @@ class LoginViewModel: ObservableObject {
     
     func login() async throws {
         try await AuthService.shared.login(withEmail: email, password: password)
+    }
+    
+    func loginWithGooggle(credentals: AuthCredential) async throws {
+        try await AuthService.shared.loginWithGoogle(credential: credentals)
     }
 }

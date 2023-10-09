@@ -21,6 +21,7 @@ class UserService {
         let snapshot = try await FirestoreConstants.UserCollection.document(uid).getDocument()
         let user = try snapshot.data(as: User.self)
         currentUser = user
+        print("user : \(currentUser)")
     }
     
     @MainActor
@@ -46,6 +47,23 @@ class UserService {
             }
             
             complition(user)
+        }
+    }
+    
+    static func updateUser(_ user: User) {
+        let userRef = FirestoreConstants.UserCollection.document(user.id)
+        let updatedUserData: [String: Any] = [
+            "email": user.email,
+            "fullName": user.fullName,
+            "profileImageURL": user.profileImageURL
+        ]
+        
+        userRef.setData(updatedUserData, merge: true) { error in
+            if let error = error {
+                print("Error updating user: \(error.localizedDescription)")
+            } else {
+                print("User updated successfully")
+            }
         }
     }
 }

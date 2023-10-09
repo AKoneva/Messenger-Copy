@@ -38,12 +38,19 @@ struct CircleProfileImageView: View {
     let size: ProfileImageSize
     
     var body: some View {
-        if let url = user?.profileImageURL {
-            Image(url)
-                .resizable()
-                .scaledToFill()
-                .frame(width: size.dimantion, height: size.dimantion)
-                .clipShape(Circle())
+        if let user = user {
+            AsyncImage(url: URL(string: user.profileImageURL)) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: size.dimantion, height: size.dimantion)
+                    .clipShape(Circle())
+            } placeholder: {
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .frame(width: size.dimantion, height: size.dimantion)
+                    .foregroundColor(.gray)
+            }
         } else {
             Image(systemName: "person.circle.fill")
                 .resizable()

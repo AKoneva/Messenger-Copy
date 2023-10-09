@@ -36,9 +36,6 @@ struct InboxView: View {
                 }
             }
             .listStyle(.plain)
-            .navigationDestination(for: User.self, destination: { user in
-                ProfileView(user: user)
-            })
             .navigationDestination(isPresented: $showChat, destination: {
                 if let user = selectedUser {
                     ChatView(user: user)
@@ -50,8 +47,10 @@ struct InboxView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
-                        NavigationLink(value: viewModel.currentUser) {
-                            CircleProfileImageView(user: viewModel.currentUser, size: .xSmall)
+                        NavigationLink {
+                            ProfileView(user: viewModel.currentUser ?? User.MOCK_USER)
+                        } label: {
+                            CircleProfileImageView(user: viewModel.currentUser ?? User.MOCK_USER, size: .xSmall)
                         }
                         
                         Text("Chats")

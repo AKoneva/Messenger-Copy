@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import Firebase
 
 struct LoginView: View {
-    @StateObject var viewModel = LoginViewModel()
+    @ObservedObject var viewModel = LoginViewModel()
     
     var body: some View {
         NavigationStack {
@@ -53,10 +55,10 @@ struct LoginView: View {
                     Text("Login")
                 }
                 .buttonStyle(CustomButtonStyle(
-                                backgroundColor: Color.blue,
-                                foregroundColor: Color.white,
-                                cornerRadius: 10
-                            ))
+                    backgroundColor: Color.blue,
+                    foregroundColor: Color.white,
+                    cornerRadius: 10
+                ))
                 .padding(.vertical)
                 
                 HStack {
@@ -70,37 +72,75 @@ struct LoginView: View {
                 }
                 .foregroundColor(.gray)
                 
+                Button {
+                    signInWithGoogle()
+            } label: {
                 HStack {
-                    Image("Facebook")
+                    Image("Google")
                         .resizable()
-                        .frame(width: 28, height: 28)
-                    
-                    Text("Continue with Facebook")
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.blue)
+                        .scaledToFit()
+                        .frame(width: 32, height: 32)
+                    Text("Continue with Google")
                 }
-                .padding(.top, 8)
-                
-                Spacer()
-                Divider()
-                
-                NavigationLink {
-                    RegistrationView()
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    HStack {
-                        Text("Don`t have account?")
-                        Text("Sing Up")
-                            .fontWeight(.semibold)
-                    }
-                    .font(.footnote)
-                }
-                .padding(.vertical)
-                
             }
+            .buttonStyle(CustomButtonStyle(
+                backgroundColor: Color.white,
+                foregroundColor: Color.black,
+                cornerRadius: 10
+            ))
+            .padding(.vertical)
+            
+            
+            Spacer()
+            Divider()
+            
+            NavigationLink {
+                RegistrationView()
+                    .navigationBarBackButtonHidden()
+            } label: {
+                HStack {
+                    Text("Don`t have account?")
+                    Text("Sing Up")
+                        .fontWeight(.semibold)
+                }
+                .font(.footnote)
+            }
+            .padding(.vertical)
+            
         }
     }
+}
+    func signInWithGoogle() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: getRootController()) { [self] result, error in
+            if let error = error {
+                print("# Error signing in with Google: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString
+            else {
+                print("# Error decoding user or couldn't get idToken")
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
+            Task {
+                do {
+                    try await viewModel.loginWithGooggle(credentals: credential)
+                } catch {
+                    print("# Error during login: \(error.localizedDescription)")
+                }
+            }
+        }
+      }
 }
 
 #Preview {

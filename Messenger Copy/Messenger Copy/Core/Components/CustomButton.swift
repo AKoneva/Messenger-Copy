@@ -20,6 +20,7 @@ struct CustomButtonStyle: ButtonStyle {
             .background(
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(backgroundColor)
+                    .stroke(Color.gray, lineWidth: 0.5)
             )
             .foregroundColor(foregroundColor)
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0) // Add a slight scale effect on press

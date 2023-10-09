@@ -29,7 +29,7 @@ struct ChatMessageView: View {
             } else {
                 HStack(alignment: .bottom, spacing: 8) {
                     HStack {
-                        CircleProfileImageView(user: User.MOCK_USER, size: .xxSmall)
+                        CircleProfileImageView(user: message.user, size: .xxSmall)
                         
                         Text(message.messageText)
                             .font(.subheadline)
