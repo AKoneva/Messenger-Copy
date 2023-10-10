@@ -20,7 +20,7 @@ struct ChatView: View {
         VStack {
             ScrollView {
                 VStack {
-                    CircleProfileImageView(user: user, size: .xLarge)
+                    CircleProfileImageView(profileImageURL: user.profileImageURL, size: .xLarge)
                     
                     VStack(spacing: 4) {
                         Text(user.fullName)

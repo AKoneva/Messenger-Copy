@@ -18,7 +18,7 @@ struct ActiveNowView: View {
                 ForEach(viewModel.users) { user in
                     VStack {
                         ZStack(alignment: .bottomTrailing) {
-                            CircleProfileImageView(user: user, size: .medium)
+                            CircleProfileImageView(profileImageURL: user.profileImageURL , size: .medium)
                             Circle()
                                 .fill(.white)
                                 .frame(width: 18, height: 18)

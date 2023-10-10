@@ -14,7 +14,7 @@ struct UserProfileView: View {
         VStack {
             Spacer()
             VStack {
-                CircleProfileImageView(user: user, size: .xLarge)
+                CircleProfileImageView(profileImageURL: user.profileImageURL, size: .xLarge)
                 Text(user.fullName)
                     .font(.title2)
                     .fontWeight(.semibold)

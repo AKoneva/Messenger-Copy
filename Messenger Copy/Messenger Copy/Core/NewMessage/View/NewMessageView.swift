@@ -31,7 +31,7 @@ struct NewMessageView: View {
                     ForEach(viewModel.users) { user in
                         VStack {
                             HStack {
-                                CircleProfileImageView(user: user, size: .small)
+                                CircleProfileImageView(profileImageURL: user.profileImageURL, size: .small)
                                 Text(user.fullName)
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
