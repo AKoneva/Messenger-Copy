@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 class UserService {
     @Published var currentUser: User?
@@ -58,7 +59,7 @@ class UserService {
     @MainActor
     static func fetchUser(withUid: String, complition: @escaping(User) -> Void) {
        FirestoreConstants.UserCollection.document(withUid).getDocument { snapshot, error in
-            if let error = error {
+           if error != nil {
                 print("Error to fetch user with id: \(withUid)")
                 return
             }
@@ -85,6 +86,28 @@ class UserService {
                 print("Error updating user: \(error.localizedDescription)")
             } else {
                 print("User updated successfully")
+            }
+        }
+    }
+    
+    static func uploadProfilePhoto(user: User, imageData: Data, completion: @escaping (String) -> Void) {
+        let storageRef = Storage.storage().reference()
+        let profilePhotoRef = storageRef.child("profile_photos/\(user.id).jpg")
+        
+        profilePhotoRef.putData(imageData, metadata: nil) { (metadata, error) in
+            if error != nil {
+                print("Could`nt upload photo")
+                return
+            }
+            
+            // Successfully uploaded. Generate and return the download URL.
+            profilePhotoRef.downloadURL { (url, error) in
+                if let url = url {
+                    completion(url.absoluteString)
+                } else if error != nil {
+                    print("Could`nt generale url of photo")
+                    return
+                }
             }
         }
     }

@@ -36,31 +36,10 @@ class ProfileViewModel: ObservableObject {
                 return
             }
         
-        uploadProfilePhoto(imageData: imageData) { imageUrlString in
+        UserService.uploadProfilePhoto(user: self.user, imageData: imageData) { imageUrlString in
             self.user.profileImageURL = imageUrlString
             UserService.updateUser(self.user)
         }
     }
-    
-    func uploadProfilePhoto(imageData: Data, completion: @escaping (String) -> Void) {
-        let storageRef = Storage.storage().reference()
-        let profilePhotoRef = storageRef.child("profile_photos/\(user.id).jpg") // User-specific path
-        
-        profilePhotoRef.putData(imageData, metadata: nil) { (metadata, error) in
-            if error != nil {
-                print("Could`nt upload photo")
-                return
-            }
-            
-            // Successfully uploaded. Generate and return the download URL.
-            profilePhotoRef.downloadURL { (url, error) in
-                if let url = url {
-                    completion(url.absoluteString)
-                } else if error != nil {
-                    print("Could`nt generale url of photo")
-                    return
-                }
-            }
-        }
-    }
+   
 }

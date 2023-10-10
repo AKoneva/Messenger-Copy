@@ -47,7 +47,6 @@ struct ProfileView: View {
                     }
                 }
                 
-                
                 Text(viewModel.user.fullName)
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -66,13 +65,14 @@ struct ProfileView: View {
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                         }
-                        
                     }
                 }
+                
                 Section {
                     Button("Log out") {
                         AuthService.shared.signOut()
                     }
+                    
                     Button("Delete account") {
                         
                     }
