@@ -75,7 +75,9 @@
 		046B7CC32AD43F5D00031AFB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7CC22AD43F5D00031AFB /* GoogleSignInSwift */; };
 		046B7CC62AD4446D00031AFB /* ViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CC52AD4446D00031AFB /* ViewExtention.swift */; };
 		046B7CCE2AD4874C00031AFB /* ImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CCD2AD4874C00031AFB /* ImageCached.swift */; };
-		046B7CD62AD51AB500031AFB /* CropImageView in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7CD52AD51AB500031AFB /* CropImageView */; };
+		046B7CD92AD51F1C00031AFB /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7CD82AD51F1C00031AFB /* CropViewController */; };
+		046B7CDB2AD51F1C00031AFB /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7CDA2AD51F1C00031AFB /* TOCropViewController */; };
+		046B7CDD2AD5260100031AFB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CDC2AD5260100031AFB /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,7 @@
 		046B7CC42AD43FA800031AFB /* Messenger-Copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Messenger-Copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		046B7CC52AD4446D00031AFB /* ViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtention.swift; sourceTree = "<group>"; };
 		046B7CCD2AD4874C00031AFB /* ImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCached.swift; sourceTree = "<group>"; };
+		046B7CDC2AD5260100031AFB /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,7 @@
 				046B7C8D2AD18FB300031AFB /* FirebaseFirestoreSwift in Frameworks */,
 				046B7C792AD18FB300031AFB /* FirebaseAppCheck in Frameworks */,
 				046B7C772AD18FB300031AFB /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				046B7CDB2AD51F1C00031AFB /* TOCropViewController in Frameworks */,
 				046B7C7D2AD18FB300031AFB /* FirebaseAuth in Frameworks */,
 				046B7C812AD18FB300031AFB /* FirebaseCrashlytics in Frameworks */,
 				046B7CA12AD18FB300031AFB /* FirebaseRemoteConfigSwift in Frameworks */,
@@ -150,9 +154,9 @@
 				046B7C7B2AD18FB300031AFB /* FirebaseAppDistribution-Beta in Frameworks */,
 				046B7C7F2AD18FB300031AFB /* FirebaseAuthCombine-Community in Frameworks */,
 				046B7C9D2AD18FB300031AFB /* FirebasePerformance in Frameworks */,
+				046B7CD92AD51F1C00031AFB /* CropViewController in Frameworks */,
 				046B7C952AD18FB300031AFB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				046B7CA32AD18FB300031AFB /* FirebaseStorage in Frameworks */,
-				046B7CD62AD51AB500031AFB /* CropImageView in Frameworks */,
 				046B7C872AD18FB300031AFB /* FirebaseDynamicLinks in Frameworks */,
 				046B7C8B2AD18FB300031AFB /* FirebaseFirestoreCombine-Community in Frameworks */,
 				046B7C9B2AD18FB300031AFB /* FirebaseMessaging in Frameworks */,
@@ -510,6 +514,7 @@
 		046B7CCF2AD517ED00031AFB /* UIKitWrappers */ = {
 			isa = PBXGroup;
 			children = (
+				046B7CDC2AD5260100031AFB /* File.swift */,
 			);
 			path = UIKitWrappers;
 			sourceTree = "<group>";
@@ -560,7 +565,8 @@
 				046B7CA42AD18FB300031AFB /* FirebaseStorageCombine-Community */,
 				046B7CC02AD43F5D00031AFB /* GoogleSignIn */,
 				046B7CC22AD43F5D00031AFB /* GoogleSignInSwift */,
-				046B7CD52AD51AB500031AFB /* CropImageView */,
+				046B7CD82AD51F1C00031AFB /* CropViewController */,
+				046B7CDA2AD51F1C00031AFB /* TOCropViewController */,
 			);
 			productName = "Messenger Copy";
 			productReference = 046B7BDB2AD02C7B00031AFB /* Messenger Copy.app */;
@@ -593,7 +599,7 @@
 			packageReferences = (
 				046B7C6F2AD18FB300031AFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				046B7CBF2AD43F5D00031AFB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				046B7CD42AD51AB500031AFB /* XCRemoteSwiftPackageReference "CropImageView" */,
+				046B7CD72AD51F1C00031AFB /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = 046B7BDC2AD02C7B00031AFB /* Products */;
 			projectDirPath = "";
@@ -633,6 +639,7 @@
 				046B7CB22AD3CBEC00031AFB /* TimestampExtentions.swift in Sources */,
 				046B7C152AD115A400031AFB /* ChatMessageView.swift in Sources */,
 				046B7BF52AD02E0900031AFB /* LoginView.swift in Sources */,
+				046B7CDD2AD5260100031AFB /* File.swift in Sources */,
 				046B7C582AD11F3E00031AFB /* AuthService.swift in Sources */,
 				046B7C132AD1134C00031AFB /* ChatView.swift in Sources */,
 				046B7CB02AD2D64E00031AFB /* InboxService.swift in Sources */,
@@ -883,12 +890,12 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		046B7CD42AD51AB500031AFB /* XCRemoteSwiftPackageReference "CropImageView" */ = {
+		046B7CD72AD51F1C00031AFB /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/zhxf2012/CropImageView.git";
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1039,10 +1046,15 @@
 			package = 046B7CBF2AD43F5D00031AFB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
 		};
-		046B7CD52AD51AB500031AFB /* CropImageView */ = {
+		046B7CD82AD51F1C00031AFB /* CropViewController */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 046B7CD42AD51AB500031AFB /* XCRemoteSwiftPackageReference "CropImageView" */;
-			productName = CropImageView;
+			package = 046B7CD72AD51F1C00031AFB /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		046B7CDA2AD51F1C00031AFB /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 046B7CD72AD51F1C00031AFB /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

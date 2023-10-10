@@ -11,7 +11,7 @@ import PhotosUI
 import FirebaseStorage
 
 class ProfileViewModel: ObservableObject {
-    @Published var selectedItem: PhotosPickerItem? {
+    @Published var selectedItem: UIImage? {
         didSet {
             Task {
                 try await loadImage()
@@ -29,10 +29,12 @@ class ProfileViewModel: ObservableObject {
     @MainActor
     func loadImage() async throws {
         guard let item = selectedItem else { return }
-        guard let imageData = try await item.loadTransferable(type: Data.self) else { return }
-        guard let uiimage = UIImage(data: imageData) else { return }
+        self.image = Image(uiImage: item)
         
-        self.image = Image(uiImage: uiimage)
+        guard let imageData = item.jpegData(compressionQuality: 0.8) else {
+            print("Could`nt encode image to data.")
+                return
+            }
         
         uploadProfilePhoto(imageData: imageData) { imageUrlString in
             self.user.profileImageURL = imageUrlString
