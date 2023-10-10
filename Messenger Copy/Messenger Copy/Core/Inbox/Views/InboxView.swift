@@ -50,7 +50,7 @@ struct InboxView: View {
                         NavigationLink {
                             ProfileView(user: viewModel.currentUser ?? User.MOCK_USER)
                         } label: {
-                            CircleProfileImageView(user: viewModel.currentUser ?? User.MOCK_USER, size: .xSmall)
+                            CircleProfileImageView(profileImageURL: viewModel.currentUser?.profileImageURL ?? "", size: .xSmall)
                         }
                         
                         Text("Chats")

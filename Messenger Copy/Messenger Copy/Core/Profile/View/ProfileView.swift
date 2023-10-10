@@ -9,8 +9,12 @@ import SwiftUI
 import PhotosUI
 
 struct ProfileView: View {
-    @StateObject var viewModel = ProfileViewModel()
-    var user: User
+    @StateObject var viewModel: ProfileViewModel
+    
+    init(user: User) {
+        self._viewModel = StateObject(wrappedValue: ProfileViewModel(user: user))
+    }
+    
     var body: some View {
         VStack {
             VStack {
@@ -23,11 +27,23 @@ struct ProfileView: View {
                             .clipShape(Circle())
                         
                     } else {
-                        CircleProfileImageView(user: user, size: .xLarge)
+                        ZStack(alignment: .bottomTrailing) {
+                            CircleProfileImageView(profileImageURL: viewModel.user.profileImageURL , size: .xLarge)
+                            Circle()
+                                .fill(.green)
+                                .frame(width: 30, height: 30)
+                                .overlay {
+                                    Image(systemName: "photo.fill.on.rectangle.fill")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .tint(.white)
+                                        .frame(width: 16, height: 16)
+                                }
+                        }
                     }
                 }
                 
-                Text(user.fullName)
+                Text(viewModel.user.fullName)
                     .font(.title2)
                     .fontWeight(.semibold)
             }

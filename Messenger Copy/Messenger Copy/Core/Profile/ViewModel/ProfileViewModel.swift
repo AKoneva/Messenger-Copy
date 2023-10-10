@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import PhotosUI
+import FirebaseStorage
 
 class ProfileViewModel: ObservableObject {
     @Published var selectedItem: PhotosPickerItem? {
@@ -17,14 +18,47 @@ class ProfileViewModel: ObservableObject {
             }
         }
     }
+    @Published var user: User
     
     @Published var image: Image?
     
+    init(user: User) {
+        self.user = user
+    }
+    
+    @MainActor
     func loadImage() async throws {
         guard let item = selectedItem else { return }
         guard let imageData = try await item.loadTransferable(type: Data.self) else { return }
         guard let uiimage = UIImage(data: imageData) else { return }
         
         self.image = Image(uiImage: uiimage)
+        
+        uploadProfilePhoto(imageData: imageData) { imageUrlString in
+            self.user.profileImageURL = imageUrlString
+            UserService.updateUser(self.user)
+        }
+    }
+    
+    func uploadProfilePhoto(imageData: Data, completion: @escaping (String) -> Void) {
+        let storageRef = Storage.storage().reference()
+        let profilePhotoRef = storageRef.child("profile_photos/\(user.id).jpg") // User-specific path
+        
+        profilePhotoRef.putData(imageData, metadata: nil) { (metadata, error) in
+            if error != nil {
+                print("Could`nt upload photo")
+                return
+            }
+            
+            // Successfully uploaded. Generate and return the download URL.
+            profilePhotoRef.downloadURL { (url, error) in
+                if let url = url {
+                    completion(url.absoluteString)
+                } else if error != nil {
+                    print("Could`nt generale url of photo")
+                    return
+                }
+            }
+        }
     }
 }

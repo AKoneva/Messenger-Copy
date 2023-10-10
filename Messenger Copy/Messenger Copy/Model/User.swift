@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
+import SwiftUI
 
 struct User: Codable, Identifiable, Hashable {
     @DocumentID var uid: String?

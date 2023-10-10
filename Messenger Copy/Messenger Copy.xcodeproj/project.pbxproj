@@ -74,6 +74,8 @@
 		046B7CC12AD43F5D00031AFB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7CC02AD43F5D00031AFB /* GoogleSignIn */; };
 		046B7CC32AD43F5D00031AFB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7CC22AD43F5D00031AFB /* GoogleSignInSwift */; };
 		046B7CC62AD4446D00031AFB /* ViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CC52AD4446D00031AFB /* ViewExtention.swift */; };
+		046B7CCE2AD4874C00031AFB /* ImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CCD2AD4874C00031AFB /* ImageCached.swift */; };
+		046B7CD62AD51AB500031AFB /* CropImageView in Frameworks */ = {isa = PBXBuildFile; productRef = 046B7CD52AD51AB500031AFB /* CropImageView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +119,7 @@
 		046B7CBD2AD43ADD00031AFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		046B7CC42AD43FA800031AFB /* Messenger-Copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Messenger-Copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		046B7CC52AD4446D00031AFB /* ViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtention.swift; sourceTree = "<group>"; };
+		046B7CCD2AD4874C00031AFB /* ImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCached.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,7 @@
 				046B7C9D2AD18FB300031AFB /* FirebasePerformance in Frameworks */,
 				046B7C952AD18FB300031AFB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				046B7CA32AD18FB300031AFB /* FirebaseStorage in Frameworks */,
+				046B7CD62AD51AB500031AFB /* CropImageView in Frameworks */,
 				046B7C872AD18FB300031AFB /* FirebaseDynamicLinks in Frameworks */,
 				046B7C8B2AD18FB300031AFB /* FirebaseFirestoreCombine-Community in Frameworks */,
 				046B7C9B2AD18FB300031AFB /* FirebaseMessaging in Frameworks */,
@@ -337,7 +341,8 @@
 		046B7C0E2AD1103D00031AFB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				046B7C0F2AD1106B00031AFB /* CircleProfileImageView.swift */,
+				046B7CCF2AD517ED00031AFB /* UIKitWrappers */,
+				046B7CCA2AD4871700031AFB /* ImageView */,
 				046B7CBB2AD3E08600031AFB /* CustomButton.swift */,
 			);
 			path = Components;
@@ -477,6 +482,38 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		046B7CCA2AD4871700031AFB /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				046B7CCC2AD4872D00031AFB /* ViewModel */,
+				046B7CCB2AD4872300031AFB /* View */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		046B7CCB2AD4872300031AFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				046B7C0F2AD1106B00031AFB /* CircleProfileImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		046B7CCC2AD4872D00031AFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				046B7CCD2AD4874C00031AFB /* ImageCached.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		046B7CCF2AD517ED00031AFB /* UIKitWrappers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKitWrappers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -523,6 +560,7 @@
 				046B7CA42AD18FB300031AFB /* FirebaseStorageCombine-Community */,
 				046B7CC02AD43F5D00031AFB /* GoogleSignIn */,
 				046B7CC22AD43F5D00031AFB /* GoogleSignInSwift */,
+				046B7CD52AD51AB500031AFB /* CropImageView */,
 			);
 			productName = "Messenger Copy";
 			productReference = 046B7BDB2AD02C7B00031AFB /* Messenger Copy.app */;
@@ -555,6 +593,7 @@
 			packageReferences = (
 				046B7C6F2AD18FB300031AFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				046B7CBF2AD43F5D00031AFB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				046B7CD42AD51AB500031AFB /* XCRemoteSwiftPackageReference "CropImageView" */,
 			);
 			productRefGroup = 046B7BDC2AD02C7B00031AFB /* Products */;
 			projectDirPath = "";
@@ -610,6 +649,7 @@
 				046B7CC62AD4446D00031AFB /* ViewExtention.swift in Sources */,
 				046B7C5E2AD1340800031AFB /* UserService.swift in Sources */,
 				046B7C0B2AD04E3400031AFB /* ProfileViewModel.swift in Sources */,
+				046B7CCE2AD4874C00031AFB /* ImageCached.swift in Sources */,
 				046B7C0D2AD050AC00031AFB /* User.swift in Sources */,
 				046B7BFD2AD03C9400031AFB /* ActiveNowView.swift in Sources */,
 				046B7C6A2AD14AE600031AFB /* MessageService.swift in Sources */,
@@ -843,6 +883,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		046B7CD42AD51AB500031AFB /* XCRemoteSwiftPackageReference "CropImageView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zhxf2012/CropImageView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -990,6 +1038,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 046B7CBF2AD43F5D00031AFB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		046B7CD52AD51AB500031AFB /* CropImageView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 046B7CD42AD51AB500031AFB /* XCRemoteSwiftPackageReference "CropImageView" */;
+			productName = CropImageView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
