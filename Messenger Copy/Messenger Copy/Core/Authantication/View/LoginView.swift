@@ -47,8 +47,8 @@ struct LoginView: View {
                     }
                 }
                 
-                Button {
-                    
+                NavigationLink {
+                    ForgotPasswordView()
                 } label: {
                     Text("Forgot password?")
                         .font(.footnote)

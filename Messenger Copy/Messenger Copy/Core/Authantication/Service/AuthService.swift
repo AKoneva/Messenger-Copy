@@ -52,6 +52,13 @@ class AuthService: ObservableObject {
         }
     }
 
+    func resetPassword(with email: String) async throws {
+        do {
+            try await  Auth.auth().sendPasswordReset(withEmail: email)
+        } catch {
+            handleError(error: error)
+        }
+    }
 
     @MainActor
     func createUser(
@@ -73,8 +80,7 @@ class AuthService: ObservableObject {
             )
             loadUserData()
         } catch {
-            let err = error as NSError
-            handleError(error: err)
+            handleError(error: error)
         }
     }
 
@@ -85,8 +91,7 @@ class AuthService: ObservableObject {
             self.userSession = nil
             UserService.shared.currentUser = nil
         } catch {
-            let err = error as NSError
-            handleError(error: err)
+            handleError(error: error)
         }
     }
 
@@ -112,8 +117,9 @@ class AuthService: ObservableObject {
         Task { try await UserService.shared.fetchCurrentUser() }
     }
 
-    private func handleError(error: NSError) {
-        guard  let authError = AuthErrorCode.Code(rawValue: error.code) else { return }
+    private func handleError(error: Error) {
+        let err = error as NSError
+        guard  let authError = AuthErrorCode.Code(rawValue: err.code) else { return }
             switch authError {
                 case .accountExistsWithDifferentCredential:
                     self.error = "Account already exist with different credetial"

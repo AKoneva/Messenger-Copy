@@ -76,6 +76,8 @@
 		046B7CC62AD4446D00031AFB /* ViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CC52AD4446D00031AFB /* ViewExtention.swift */; };
 		046B7CCE2AD4874C00031AFB /* ImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CCD2AD4874C00031AFB /* ImageCached.swift */; };
 		046B7CDD2AD5260100031AFB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CDC2AD5260100031AFB /* ImagePicker.swift */; };
+		046B7CE32AD94A9500031AFB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE22AD94A9500031AFB /* ForgotPasswordView.swift */; };
+		046B7CE52AD94B0C00031AFB /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE42AD94B0C00031AFB /* ForgotPasswordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +123,8 @@
 		046B7CC52AD4446D00031AFB /* ViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtention.swift; sourceTree = "<group>"; };
 		046B7CCD2AD4874C00031AFB /* ImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCached.swift; sourceTree = "<group>"; };
 		046B7CDC2AD5260100031AFB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		046B7CE22AD94A9500031AFB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		046B7CE42AD94B0C00031AFB /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +283,7 @@
 			children = (
 				046B7BF42AD02E0900031AFB /* LoginView.swift */,
 				046B7BF62AD0380F00031AFB /* RegistrationView.swift */,
+				046B7CE22AD94A9500031AFB /* ForgotPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 			children = (
 				046B7C532AD11F0300031AFB /* LoginViewModel.swift */,
 				046B7C552AD11F2700031AFB /* RegistrationViewModel.swift */,
+				046B7CE42AD94B0C00031AFB /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -627,10 +633,12 @@
 				046B7C562AD11F2700031AFB /* RegistrationViewModel.swift in Sources */,
 				046B7C072AD0497300031AFB /* ProfileView.swift in Sources */,
 				046B7C022AD044C500031AFB /* NewMessageView.swift in Sources */,
+				046B7CE52AD94B0C00031AFB /* ForgotPasswordViewModel.swift in Sources */,
 				046B7C5C2AD1283400031AFB /* ContentViewModel.swift in Sources */,
 				046B7CBA2AD3DDCA00031AFB /* UserProfileView.swift in Sources */,
 				046B7CB22AD3CBEC00031AFB /* TimestampExtentions.swift in Sources */,
 				046B7C152AD115A400031AFB /* ChatMessageView.swift in Sources */,
+				046B7CE32AD94A9500031AFB /* ForgotPasswordView.swift in Sources */,
 				046B7BF52AD02E0900031AFB /* LoginView.swift in Sources */,
 				046B7CDD2AD5260100031AFB /* ImagePicker.swift in Sources */,
 				046B7C582AD11F3E00031AFB /* AuthService.swift in Sources */,
