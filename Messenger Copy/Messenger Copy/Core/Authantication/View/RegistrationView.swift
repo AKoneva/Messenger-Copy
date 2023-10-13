@@ -10,6 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = RegistrationViewModel()
+    @ObservedObject var authService = AuthService.shared
     
     var body: some View {
         NavigationStack {
@@ -42,6 +43,14 @@ struct RegistrationView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
                         .padding(.horizontal, 24)
+                    
+                    if let error = authService.error {
+                        Text(error)
+                            .font(.footnote)
+                            .foregroundColor(.red)
+                            .padding(.vertical,5)
+                            .padding(.horizontal)
+                    }
                 }
                 
                 Button {
@@ -71,7 +80,6 @@ struct RegistrationView: View {
                     .font(.footnote)
                 }
                 .padding(.vertical)
-                
             }
         }
     }

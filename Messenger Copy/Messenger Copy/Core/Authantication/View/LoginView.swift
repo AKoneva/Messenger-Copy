@@ -11,7 +11,8 @@ import Firebase
 
 struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
-    
+    @ObservedObject var authService = AuthService.shared
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -36,10 +37,18 @@ struct LoginView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
                         .padding(.horizontal, 24)
+                
+                    if let error = authService.error {
+                        Text(error)
+                            .font(.footnote)
+                            .foregroundColor(.red)
+                            .padding(.vertical,5)
+                            .padding(.horizontal)
+                    }
                 }
                 
                 Button {
-                    Task { try await viewModel.login() }
+                    
                 } label: {
                     Text("Forgot password?")
                         .font(.footnote)
@@ -74,42 +83,43 @@ struct LoginView: View {
                 
                 Button {
                     signInWithGoogle()
-            } label: {
-                HStack {
-                    Image("Google")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 32, height: 32)
-                    Text("Continue with Google")
+                } label: {
+                    HStack {
+                        Image("Google")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 32, height: 32)
+                        Text("Continue with Google")
+                    }
                 }
-            }
-            .buttonStyle(CustomButtonStyle(
-                backgroundColor: Color.white,
-                foregroundColor: Color.black,
-                cornerRadius: 10
-            ))
-            .padding(.vertical)
-            
-            
-            Spacer()
-            Divider()
-            
-            NavigationLink {
-                RegistrationView()
-                    .navigationBarBackButtonHidden()
-            } label: {
-                HStack {
-                    Text("Don`t have account?")
-                    Text("Sing Up")
-                        .fontWeight(.semibold)
+                .buttonStyle(CustomButtonStyle(
+                    backgroundColor: Color.white,
+                    foregroundColor: Color.black,
+                    cornerRadius: 10
+                ))
+                .padding(.vertical)
+                
+                
+                Spacer()
+                Divider()
+                
+                NavigationLink {
+                    RegistrationView()
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    HStack {
+                        Text("Don`t have account?")
+                        Text("Sing Up")
+                            .fontWeight(.semibold)
+                    }
+                    .font(.footnote)
                 }
-                .font(.footnote)
+                .padding(.vertical)
+                
             }
-            .padding(.vertical)
-            
         }
     }
-}
+    
     func signInWithGoogle() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         // Create Google Sign In configuration object.
@@ -120,6 +130,7 @@ struct LoginView: View {
         GIDSignIn.sharedInstance.signIn(withPresenting: getRootController()) { [self] result, error in
             if let error = error {
                 print("# Error signing in with Google: \(error.localizedDescription)")
+                AuthService.shared.error = error.localizedDescription
                 return
             }
             
@@ -137,10 +148,11 @@ struct LoginView: View {
                     try await viewModel.loginWithGooggle(credentals: credential)
                 } catch {
                     print("# Error during login: \(error.localizedDescription)")
+                    AuthService.shared.error = error.localizedDescription
                 }
             }
         }
-      }
+    }
 }
 
 #Preview {
