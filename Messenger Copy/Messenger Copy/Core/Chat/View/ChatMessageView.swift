@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChatMessageView: View {
+    @Environment(\.colorScheme) var colorScheme
+
     let message: Message
     
     private var isFromCurrentUser: Bool {
@@ -34,8 +36,8 @@ struct ChatMessageView: View {
                         Text(message.messageText)
                             .font(.subheadline)
                             .padding(12)
-                            .background(Color(.systemGray5))
-                            .foregroundStyle(.black)
+                            .background(Color(colorScheme == .dark ? .systemGray3 : .systemGray5))
+                            .foregroundStyle(.primary)
                             .clipShape(ChatBubbleView(isFromCurrentUser: isFromCurrentUser))
                             .frame(width: UIScreen.main.bounds.width / 1.75, alignment: .leading)
                         
@@ -46,4 +48,8 @@ struct ChatMessageView: View {
         }
         .padding(.horizontal, 8)
     }
+}
+
+#Preview {
+    ChatMessageView(message: Message.MOCK_MESSAGE)
 }

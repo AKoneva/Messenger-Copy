@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewMessageView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var searchText = ""
     @StateObject var viewModel = NewMessageViewModel()
@@ -19,8 +20,8 @@ struct NewMessageView: View {
                 TextField("To", text: $searchText)
                     .frame(height: 44)
                     .padding(.leading)
-                    .background(Color(.systemGroupedBackground))
-                
+                    .background(colorScheme == .dark ? Color(.systemGray3) : Color(.systemGroupedBackground))
+
                 Text("CONTACTS")
                     .font(.footnote)
                     .foregroundStyle(.gray)
