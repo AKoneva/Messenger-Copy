@@ -35,3 +35,14 @@ struct Message: Identifiable, Codable, Hashable {
         timeStamp.dateValue().timestampString()
     }
 }
+
+extension Message {
+    static let MOCK_MESSAGE = Message(
+        messageId: "messageID",
+        fromId: "ChatParthnerID",
+        toId: "UserID",
+        messageText: "Here is test message for you. Enjoy!",
+        timeStamp: Timestamp(),
+        isRead: false,
+        user: User.MOCK_USER)
+}

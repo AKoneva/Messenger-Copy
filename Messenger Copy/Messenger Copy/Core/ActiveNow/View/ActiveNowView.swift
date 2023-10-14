@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ActiveNowView: View {
+    @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = ActiveNowViewModel()
     @State var showUserProfile = false
     @State private var selectedUser: User?
@@ -20,7 +21,7 @@ struct ActiveNowView: View {
                         ZStack(alignment: .bottomTrailing) {
                             CircleProfileImageView(profileImageURL: user.profileImageURL , size: .medium)
                             Circle()
-                                .fill(.white)
+                                .fill(colorScheme == .dark ? .black : .white)
                                 .frame(width: 18, height: 18)
                                 .overlay {
                                     Circle()
@@ -31,7 +32,7 @@ struct ActiveNowView: View {
                         }
                         Text(user.firstName)
                             .font(.footnote)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(colorScheme == .dark ? .white : .gray)
                     }
                     .onTapGesture {
                         selectedUser = user

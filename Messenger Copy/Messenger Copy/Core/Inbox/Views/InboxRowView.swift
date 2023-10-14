@@ -9,6 +9,7 @@ import SwiftUI
 import FirebaseFirestore
 
 struct InboxRowView: View {
+    @Environment(\.colorScheme) var colorScheme
     let message: Message
     
     var body: some View {
@@ -33,19 +34,12 @@ struct InboxRowView: View {
                 Image(systemName: "chevron.right")
             }
             .font(.footnote)
-            .foregroundStyle(.gray)
+            .foregroundStyle(colorScheme == .dark ? .white : .gray)
         }
         .frame(height: 72)
     }
 }
 
 #Preview {
-    InboxRowView(message: Message(messageId: UUID().uuidString,
-                                  fromId: UUID().uuidString,
-                                  toId: UUID().uuidString,
-                                  messageText: "Test message",
-                                  timeStamp: Timestamp(),
-                                  isRead: false,
-                                  user: nil)
-    )
+    InboxRowView(message: Message.MOCK_MESSAGE)
 }
