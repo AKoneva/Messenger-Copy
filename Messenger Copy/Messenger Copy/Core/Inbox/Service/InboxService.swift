@@ -24,11 +24,13 @@ class InboxService {
                 print("# Error fetching recent message documents: \(error)")
                 return
             }
-            
-            guard let changes = snapshot?.documentChanges.filter({
-                $0.type == .added || $0.type == .modified
-            }) else {
-                print("# Error filer documents of recent message")
+
+            guard let changes = snapshot?.documentChanges
+                .filter({
+                    $0.type == .added || $0.type == .modified || $0.type == .removed
+                })
+            else {
+                print("# Error no changes documents of recent message")
                 return
             }
             

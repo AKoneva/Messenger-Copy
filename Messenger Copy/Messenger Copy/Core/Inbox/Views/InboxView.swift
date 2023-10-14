@@ -24,15 +24,15 @@ struct InboxView: View {
                     InboxRowView(message: message)
                         .onTapGesture {
                             selectedUser = message.user
-                            showChat = true
                         }
-                }
-                .swipeActions {
-                    Button {
-                        print("Delete")
-                    } label: {
-                        Image(systemName: "trash")
-                    }
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                viewModel.deleteChat(with: message.user)
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                            .background(.red)
+                        }
                 }
             }
             .listStyle(.plain)
@@ -44,6 +44,11 @@ struct InboxView: View {
             .fullScreenCover(isPresented: $showNewMessageView) {
                 NewMessageView(selectedUser: $selectedUser)
             }
+            .onChange(of: selectedUser) { oldValue, newValue in
+                   if newValue != nil {
+                       showChat = true
+                   }
+               }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {

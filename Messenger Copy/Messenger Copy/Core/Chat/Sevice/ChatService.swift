@@ -66,5 +66,51 @@ struct ChatService {
              complition(messages.sorted(by: { $0.timeStamp < $1.timeStamp }))
         }
     }
+
+    func deleteChat() {
+        guard let currentId = Auth.auth().currentUser?.uid else { return }
+
+        let userChatCollection = FirestoreConstants.MessagesCollection.document(currentId)
+
+         let chatReference = userChatCollection.collection(chatParther.id)
+
+        chatReference.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting subcollection documents: \(error)")
+                return
+            }
+
+            let batch = Firestore.firestore().batch()
+
+            for document in querySnapshot!.documents {
+                batch.deleteDocument(document.reference)
+            }
+
+            batch.commit { error in
+                if let error = error {
+                    print("Error committing batch to delete subcollection documents: \(error)")
+                } else {
+                    deleteChatFromRecent()
+                    print("Subcollection documents deleted successfully")
+                }
+            }
+        }
+    }
+
+    private func  deleteChatFromRecent() {
+        guard let currentId = Auth.auth().currentUser?.uid else { return }
+
+        let userChatCollection = FirestoreConstants.MessagesCollection.document(currentId)
+        let recentsRef = userChatCollection.collection("mostRecentMessages").document(chatParther.id)
+
+        recentsRef.delete { error in
+            if let error = error {
+                print("Problems: \(error)")
+            } else {
+                print("Chat deleted from recents.")
+            }
+        }
+
+    }
 }
 
