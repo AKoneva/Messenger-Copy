@@ -14,6 +14,13 @@ class InboxViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var recentMessages = [Message]()
 
+    @Published var searchFilter = "" {
+        didSet {
+            applySearchFilter()
+        }
+    }
+
+    private var fetchedMessages = [Message]()
     private var cancelable = Set<AnyCancellable>()
 
     let service = InboxService()
@@ -47,17 +54,22 @@ class InboxViewModel: ObservableObject {
                                 self.recentMessages[index] = settedUserMessage
                             } else {
                                 self.recentMessages.append(settedUserMessage)
+                                self.recentMessages.sort(by: { $0.timeStamp > $1.timeStamp })
+                                self.fetchedMessages = self.recentMessages
+                                print(self.fetchedMessages)
                             }
                         }
                     }
                 case .removed:
                     if let message = try? change.document.data(as: Message.self) {
                         recentMessages.removeAll { $0.chatPartherID == message.chatPartherID }
+                        self.recentMessages.sort(by: { $0.timeStamp > $1.timeStamp })
+                        self.fetchedMessages = self.recentMessages
+                        print(self.fetchedMessages)
                     }
             }
-        }
 
-        recentMessages.sort(by: { $0.timeStamp > $1.timeStamp })
+        }
     }
 
 
@@ -67,5 +79,16 @@ class InboxViewModel: ObservableObject {
         let chatService = ChatService(chatParther: user)
 
         chatService.deleteChat()
+    }
+
+    private func applySearchFilter() {
+        if searchFilter != "" {
+            recentMessages = fetchedMessages.filter { message in
+                let username = message.user?.fullName.lowercased() ?? ""
+                return username.contains(searchFilter.lowercased())
+            }
+        } else {
+            recentMessages = fetchedMessages
+        }
     }
 }

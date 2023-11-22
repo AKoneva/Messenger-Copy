@@ -11,17 +11,41 @@ import Firebase
 
 class NewMessageViewModel: ObservableObject {
     @Published var users = [User]()
-    
-    
-    init() {
-        Task { try await fetchUsers() }
+    @Published var isLoading = false
+    @Published var searchText = "" {
+        didSet {
+            applySearchFilter()
+        }
     }
 
+    var fetchedUsers = [User]()
+
     @MainActor
-    func fetchUsers() async throws  {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        
-        let users = try await UserService.fetchAllUser()
-        self.users = users.filter({ $0.uid != currentUid})
+    func fetchUsers() {
+        isLoading = true
+
+        Task {
+            do {
+                guard let currentUid = Auth.auth().currentUser?.uid else { return }
+
+                users = try await UserService.fetchAllUser().filter({ $0.uid != currentUid })
+                fetchedUsers = users
+                isLoading = false
+            } catch {
+                print(error.localizedDescription)
+                isLoading = false
+            }
+        }
+    }
+
+    private func applySearchFilter() {
+        if searchText.isEmpty {
+            users = fetchedUsers
+        } else {
+            users = fetchedUsers.filter { user in
+                let username = user.fullName.lowercased()
+                return username.contains(searchText.lowercased())
+            }
+        }
     }
 }

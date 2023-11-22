@@ -78,6 +78,7 @@
 		046B7CDD2AD5260100031AFB /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CDC2AD5260100031AFB /* ImagePicker.swift */; };
 		046B7CE32AD94A9500031AFB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE22AD94A9500031AFB /* ForgotPasswordView.swift */; };
 		046B7CE52AD94B0C00031AFB /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE42AD94B0C00031AFB /* ForgotPasswordViewModel.swift */; };
+		046B7CE72ADA87FF00031AFB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE62ADA87FF00031AFB /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +126,7 @@
 		046B7CDC2AD5260100031AFB /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		046B7CE22AD94A9500031AFB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		046B7CE42AD94B0C00031AFB /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		046B7CE62ADA87FF00031AFB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 				046B7CCF2AD517ED00031AFB /* UIKitWrappers */,
 				046B7CCA2AD4871700031AFB /* ImageView */,
 				046B7CBB2AD3E08600031AFB /* CustomButton.swift */,
+				046B7CE62ADA87FF00031AFB /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				046B7C152AD115A400031AFB /* ChatMessageView.swift in Sources */,
 				046B7CE32AD94A9500031AFB /* ForgotPasswordView.swift in Sources */,
 				046B7BF52AD02E0900031AFB /* LoginView.swift in Sources */,
+				046B7CE72ADA87FF00031AFB /* LoadingView.swift in Sources */,
 				046B7CDD2AD5260100031AFB /* ImagePicker.swift in Sources */,
 				046B7C582AD11F3E00031AFB /* AuthService.swift in Sources */,
 				046B7C132AD1134C00031AFB /* ChatView.swift in Sources */,

@@ -10,14 +10,13 @@ import SwiftUI
 struct NewMessageView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
-    @State private var searchText = ""
     @StateObject var viewModel = NewMessageViewModel()
     @Binding var selectedUser: User?
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
-                TextField("To", text: $searchText)
+                TextField("To", text: $viewModel.searchText)
                     .frame(height: 44)
                     .padding(.leading)
                     .background(colorScheme == .dark ? Color(.systemGray3) : Color(.systemGroupedBackground))
@@ -27,26 +26,31 @@ struct NewMessageView: View {
                     .foregroundStyle(.gray)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                
+
                 VStack {
-                    ForEach(viewModel.users) { user in
-                        VStack {
-                            HStack {
-                                CircleProfileImageView(profileImageURL: user.profileImageURL, size: .small)
-                                Text(user.fullName)
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                Spacer()
+                    if viewModel.isLoading {
+                        ProgressView()
+                    } else {
+                        ForEach(viewModel.users) { user in
+                            VStack {
+                                HStack {
+                                    CircleProfileImageView(profileImageURL: user.profileImageURL, size: .small)
+                                    Text(user.fullName)
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                    Spacer()
+                                }
+                                .padding(.horizontal)
+                                .padding(.vertical, 10)
+                                Divider()
                             }
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
-                            Divider()
-                        }
-                        .onTapGesture {
-                            selectedUser = user
-                            dismiss()
+                            .onTapGesture {
+                                selectedUser = user
+                                dismiss()
+                            }
                         }
                     }
+
                 }
             }
             .navigationTitle("New message")
@@ -58,6 +62,9 @@ struct NewMessageView: View {
                     }
                     .foregroundColor(.blue)
                 }
+            }
+            .onAppear {
+                Task { viewModel.fetchUsers() }
             }
         }
     }
