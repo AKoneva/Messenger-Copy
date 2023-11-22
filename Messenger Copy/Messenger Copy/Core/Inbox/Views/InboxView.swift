@@ -13,7 +13,8 @@ struct InboxView: View {
     @StateObject var viewModel = InboxViewModel()
     @State private var selectedUser: User?
     @State private var showChat = false
-    
+//    @State private var g = true
+
     var body: some View {
         NavigationStack {
             List {
@@ -37,6 +38,7 @@ struct InboxView: View {
                 }
             }
             .listStyle(.plain)
+            .searchable(text: $viewModel.searchFilter, prompt: "Search")
             .navigationDestination(isPresented: $showChat, destination: {
                 if let user = selectedUser {
                     ChatView(user: user)
@@ -46,10 +48,10 @@ struct InboxView: View {
                 NewMessageView(selectedUser: $selectedUser)
             }
             .onChange(of: selectedUser) { oldValue, newValue in
-                   if newValue != nil {
-                       showChat = true
-                   }
-               }
+                if newValue != nil {
+                    showChat = true
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack {
