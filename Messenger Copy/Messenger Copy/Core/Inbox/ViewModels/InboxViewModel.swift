@@ -54,21 +54,17 @@ class InboxViewModel: ObservableObject {
                                 self.recentMessages[index] = settedUserMessage
                             } else {
                                 self.recentMessages.append(settedUserMessage)
-                                self.recentMessages.sort(by: { $0.timeStamp > $1.timeStamp })
-                                self.fetchedMessages = self.recentMessages
-                                print(self.fetchedMessages)
                             }
+
+                            self.sortRecentMessages()
                         }
                     }
                 case .removed:
                     if let message = try? change.document.data(as: Message.self) {
                         recentMessages.removeAll { $0.chatPartherID == message.chatPartherID }
-                        self.recentMessages.sort(by: { $0.timeStamp > $1.timeStamp })
-                        self.fetchedMessages = self.recentMessages
-                        print(self.fetchedMessages)
+                        self.sortRecentMessages()
                     }
             }
-
         }
     }
 
@@ -90,5 +86,14 @@ class InboxViewModel: ObservableObject {
         } else {
             recentMessages = fetchedMessages
         }
+    }
+
+    private func sortRecentMessages() {
+        recentMessages = recentMessages.sorted { (message1, message2) -> Bool in
+                let date1 = message1.timeStamp.dateValue()
+                let date2 = message2.timeStamp.dateValue()
+                return date1 > date2
+            }
+        fetchedMessages = recentMessages
     }
 }
