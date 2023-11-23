@@ -34,7 +34,8 @@ class UserService {
 
             if snapshot.exists {
                 do {
-                    let user = try snapshot.data(as: User.self)
+                    var user = try snapshot.data(as: User.self)
+                    user.isOnline = true
                     self.currentUser = user
                     print("User updated: \(user)")
                 } catch {
@@ -78,7 +79,8 @@ class UserService {
         let updatedUserData: [String: Any] = [
             "email": user.email,
             "fullName": user.fullName,
-            "profileImageURL": user.profileImageURL
+            "profileImageURL": user.profileImageURL,
+            "isOnline": user.isOnline
         ]
         
         userRef.setData(updatedUserData, merge: true) { error in
@@ -108,6 +110,21 @@ class UserService {
                     print("Could`nt generale url of photo")
                     return
                 }
+            }
+        }
+    }
+
+    static func updateUserStatus(_ user: User) {
+        let userRef = FirestoreConstants.UserCollection.document(user.id)
+        let updatedUserData: [String: Any] = [
+            "isOnline": user.isOnline
+        ]
+
+        userRef.setData(updatedUserData, merge: true) { error in
+            if let error = error {
+                print("Error updating user: \(error.localizedDescription)")
+            } else {
+                print("User updated successfully")
             }
         }
     }

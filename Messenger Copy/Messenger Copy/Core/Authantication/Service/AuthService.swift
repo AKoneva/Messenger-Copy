@@ -27,6 +27,7 @@ class AuthService: ObservableObject {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
             loadUserData()
+            OnlineService.shared.setUserOnline()
         } catch {
             let err = error as NSError
             handleError(error: err)
@@ -48,6 +49,7 @@ class AuthService: ObservableObject {
                 UserService.updateUser(userModel)
                 self.userSession = result.user
                 loadUserData()
+                OnlineService.shared.setUserOnline()
             }
         }
     }
@@ -90,6 +92,7 @@ class AuthService: ObservableObject {
             try Auth.auth().signOut()
             self.userSession = nil
             UserService.shared.currentUser = nil
+            OnlineService.shared.setUserOffline()
         } catch {
             handleError(error: error)
         }
