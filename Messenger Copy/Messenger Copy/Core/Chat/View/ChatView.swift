@@ -58,12 +58,8 @@ struct ChatView: View {
                     // Scroll to the last message when the view appears
                     scrollToLastMessage(value)
                 }
-                .onChange(of: viewModel.messages.count) { _ in
+                .onChange(of: viewModel.messages.count) { _, _ in
                     // Scroll to the last message when the number of messages changes
-                    scrollToLastMessage(value)
-                }
-                .onChange(of: viewModel.messages.last?.messageId) { _ in
-                    // Scroll to the last message when the last message changes
                     scrollToLastMessage(value)
                 }
             }

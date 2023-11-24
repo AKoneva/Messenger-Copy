@@ -11,7 +11,11 @@ struct InboxView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var showNewMessageView: Bool = false
     @StateObject var viewModel = InboxViewModel()
-    @State private var selectedUser: User?
+    @State private var selectedUser: User? {
+        didSet {
+            showChat = true
+        }
+    }
     @State private var showChat = false
 
     var body: some View {
@@ -45,11 +49,6 @@ struct InboxView: View {
             })
             .fullScreenCover(isPresented: $showNewMessageView) {
                 NewMessageView(selectedUser: $selectedUser)
-            }
-            .onChange(of: selectedUser) { oldValue, newValue in
-                if newValue != nil {
-                    showChat = true
-                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
