@@ -13,7 +13,6 @@ struct InboxView: View {
     @StateObject var viewModel = InboxViewModel()
     @State private var selectedUser: User?
     @State private var showChat = false
-//    @State private var g = true
 
     var body: some View {
         NavigationStack {

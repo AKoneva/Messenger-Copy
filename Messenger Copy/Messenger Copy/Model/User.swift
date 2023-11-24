@@ -14,7 +14,8 @@ struct User: Codable, Identifiable, Hashable {
     let fullName: String
     let email: String
     var profileImageURL: String
-    
+    var isOnline: Bool = false
+
     var id: String {
         return uid ?? UUID().uuidString
     }
@@ -28,5 +29,5 @@ struct User: Codable, Identifiable, Hashable {
 }
 
 extension User {
-    static let MOCK_USER = User(fullName: "Anna Perekhrest", email: "anna.perekhrest@gmaol.com", profileImageURL: "Dev")
+    static let MOCK_USER = User(fullName: "Anna Perekhrest", email: "anna.perekhrest@gmaol.com", profileImageURL: "Dev", isOnline: true)
 }

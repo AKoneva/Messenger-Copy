@@ -83,6 +83,10 @@ struct ProfileView: View {
         .sheet(isPresented: $isImagePickerPresented) {
             ImagePicker(selectedImage: $viewModel.selectedItem)
         }
+//        .onAppear {
+//            OnlineService.shared.observeUserPresence()
+//        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

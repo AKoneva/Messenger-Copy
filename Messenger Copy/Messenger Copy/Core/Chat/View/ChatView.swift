@@ -21,7 +21,19 @@ struct ChatView: View {
         VStack {
             ScrollView {
                 VStack {
-                    CircleProfileImageView(profileImageURL: user.profileImageURL, size: .xLarge)
+                    ZStack(alignment: .bottomTrailing) {
+                        CircleProfileImageView(profileImageURL: user.profileImageURL, size: .xLarge)
+                        if user.isOnline {
+                            Circle()
+                                .fill(colorScheme == .dark ? .black : .white)
+                                .frame(width: 26, height: 26)
+                                .overlay {
+                                    Circle()
+                                        .fill(.green)
+                                        .frame(width: 20, height: 20)
+                                }
+                        }
+                    }
                     
                     VStack(spacing: 4) {
                         Text(user.fullName)

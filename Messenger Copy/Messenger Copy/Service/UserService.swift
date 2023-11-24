@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 
 class UserService {
-    @Published var currentUser: User?
+    @Published var currentUser: User? 
     
     static let shared = UserService()
 
@@ -34,9 +34,8 @@ class UserService {
 
             if snapshot.exists {
                 do {
-                    let user = try snapshot.data(as: User.self)
+                    var user = try snapshot.data(as: User.self)
                     self.currentUser = user
-                    print("User updated: \(user)")
                 } catch {
                     print("# Error decoding user data: \(error)")
                 }
@@ -78,7 +77,8 @@ class UserService {
         let updatedUserData: [String: Any] = [
             "email": user.email,
             "fullName": user.fullName,
-            "profileImageURL": user.profileImageURL
+            "profileImageURL": user.profileImageURL,
+            "isOnline": user.isOnline
         ]
         
         userRef.setData(updatedUserData, merge: true) { error in
@@ -108,6 +108,21 @@ class UserService {
                     print("Could`nt generale url of photo")
                     return
                 }
+            }
+        }
+    }
+
+    func setUserOnlineStatus(uid: String, isOnline: Bool) {
+        let userRef = FirestoreConstants.UserCollection.document(uid)
+        let updatedUserData: [String: Any] = [
+            "isOnline": isOnline
+        ]
+
+        userRef.setData(updatedUserData, merge: true) { error in
+            if let error = error {
+                print("Error updating user: \(error.localizedDescription)")
+            } else {
+                print("User updated successfully")
             }
         }
     }

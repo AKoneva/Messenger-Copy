@@ -20,15 +20,16 @@ struct ActiveNowView: View {
                     VStack {
                         ZStack(alignment: .bottomTrailing) {
                             CircleProfileImageView(profileImageURL: user.profileImageURL , size: .medium)
-                            Circle()
-                                .fill(colorScheme == .dark ? .black : .white)
-                                .frame(width: 18, height: 18)
-                                .overlay {
-                                    Circle()
-                                        .fill(.green)
-                                        .frame(width: 12, height: 12)
-                                }
-                        
+                            if user.isOnline {
+                                Circle()
+                                    .fill(colorScheme == .dark ? .black : .white)
+                                    .frame(width: 18, height: 18)
+                                    .overlay {
+                                        Circle()
+                                            .fill(.green)
+                                            .frame(width: 12, height: 12)
+                                    }
+                            }
                         }
                         Text(user.firstName)
                             .font(.footnote)
