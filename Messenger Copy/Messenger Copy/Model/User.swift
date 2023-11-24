@@ -14,12 +14,7 @@ struct User: Codable, Identifiable, Hashable {
     let fullName: String
     let email: String
     var profileImageURL: String
-
-    var isOnline: Bool = false {
-        didSet {
-            UserService.updateUserStatus(self)
-        }
-    }
+    var isOnline: Bool = false
 
     var id: String {
         return uid ?? UUID().uuidString

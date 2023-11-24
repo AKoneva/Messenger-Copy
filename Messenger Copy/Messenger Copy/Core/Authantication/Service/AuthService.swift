@@ -26,8 +26,8 @@ class AuthService: ObservableObject {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
+            UserService.shared.setUserOnlineStatus(uid: result.user.uid, isOnline: true)
             loadUserData()
-            OnlineService.shared.setUserOnline()
         } catch {
             let err = error as NSError
             handleError(error: err)
@@ -43,13 +43,13 @@ class AuthService: ObservableObject {
                     uid: user.uid,
                     fullName: user.displayName ?? "",
                     email: user.email ?? "",
-                    profileImageURL: user.photoURL?.absoluteString ?? ""
+                    profileImageURL: user.photoURL?.absoluteString ?? "",
+                    isOnline: true
                 )
 
                 UserService.updateUser(userModel)
                 self.userSession = result.user
                 loadUserData()
-                OnlineService.shared.setUserOnline()
             }
         }
     }
@@ -78,7 +78,8 @@ class AuthService: ObservableObject {
                 email: email,
                 fullName: fullName,
                 id: results.user.uid,
-                profilePhoto: profilePhoto
+                profilePhoto: profilePhoto,
+                isOnline: true
             )
             loadUserData()
         } catch {
@@ -89,10 +90,11 @@ class AuthService: ObservableObject {
 
     func signOut() {
         do {
+            guard let user = Auth.auth().currentUser else { return }
+            UserService.shared.setUserOnlineStatus(uid: user.uid, isOnline: false)
             try Auth.auth().signOut()
             self.userSession = nil
             UserService.shared.currentUser = nil
-            OnlineService.shared.setUserOffline()
         } catch {
             handleError(error: error)
         }
@@ -103,13 +105,15 @@ class AuthService: ObservableObject {
         email: String,
         fullName: String,
         id: String,
-        profilePhoto: URL? = nil
+        profilePhoto: URL? = nil,
+        isOnline: Bool
     ) async throws {
         let user = User(
             uid: uid,
             fullName: fullName,
             email: email,
-            profileImageURL: profilePhoto?.absoluteString ?? ""
+            profileImageURL: profilePhoto?.absoluteString ?? "",
+            isOnline: isOnline
         )
         guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
 

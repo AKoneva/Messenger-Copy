@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 
 class UserService {
-    @Published var currentUser: User?
+    @Published var currentUser: User? 
     
     static let shared = UserService()
 
@@ -35,9 +35,7 @@ class UserService {
             if snapshot.exists {
                 do {
                     var user = try snapshot.data(as: User.self)
-                    user.isOnline = true
                     self.currentUser = user
-                    print("User updated: \(user)")
                 } catch {
                     print("# Error decoding user data: \(error)")
                 }
@@ -114,10 +112,10 @@ class UserService {
         }
     }
 
-    static func updateUserStatus(_ user: User) {
-        let userRef = FirestoreConstants.UserCollection.document(user.id)
+    func setUserOnlineStatus(uid: String, isOnline: Bool) {
+        let userRef = FirestoreConstants.UserCollection.document(uid)
         let updatedUserData: [String: Any] = [
-            "isOnline": user.isOnline
+            "isOnline": isOnline
         ]
 
         userRef.setData(updatedUserData, merge: true) { error in

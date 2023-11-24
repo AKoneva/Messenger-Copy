@@ -79,7 +79,6 @@
 		046B7CE32AD94A9500031AFB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE22AD94A9500031AFB /* ForgotPasswordView.swift */; };
 		046B7CE52AD94B0C00031AFB /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE42AD94B0C00031AFB /* ForgotPasswordViewModel.swift */; };
 		046B7CE72ADA87FF00031AFB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B7CE62ADA87FF00031AFB /* LoadingView.swift */; };
-		049F6D222B0F772000D18781 /* OnlineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F6D212B0F772000D18781 /* OnlineService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,7 +127,6 @@
 		046B7CE22AD94A9500031AFB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		046B7CE42AD94B0C00031AFB /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		046B7CE62ADA87FF00031AFB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		049F6D212B0F772000D18781 /* OnlineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +257,6 @@
 			children = (
 				046B7C5D2AD1340700031AFB /* UserService.swift */,
 				046B7C692AD14AE600031AFB /* MessageService.swift */,
-				049F6D212B0F772000D18781 /* OnlineService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -654,7 +651,6 @@
 				046B7CAD2AD2D0CD00031AFB /* Constants.swift in Sources */,
 				046B7C172AD11A4B00031AFB /* ChatBubbleView.swift in Sources */,
 				046B7CB82AD3D9B900031AFB /* ActiveNowViewModel.swift in Sources */,
-				049F6D222B0F772000D18781 /* OnlineService.swift in Sources */,
 				046B7BE12AD02C7B00031AFB /* ContentView.swift in Sources */,
 				046B7CB42AD3D5EE00031AFB /* DateExtentions.swift in Sources */,
 				046B7C092AD04ACC00031AFB /* SettingsViewModel.swift in Sources */,
